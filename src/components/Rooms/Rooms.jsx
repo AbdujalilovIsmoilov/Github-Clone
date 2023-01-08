@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Context } from "../../UI/context/Context";
 
 const Rooms = () => {
-  const { apiValue } = useContext(Context);
+  const { apiValue,object } = useContext(Context);
   const [array, setArray] = useState([]);
 
   const api = async () => {

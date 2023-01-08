@@ -22,7 +22,9 @@ const Navbar = () => {
   }, [apiValue]);
 
   const ClickedSubmit = (e) => {
+    setInputValue("")
     e.preventDefault();
+    window.location.reload();
     fetch(`https://api.github.com/users/${inputValue}`)
       .then((response) => response.json())
       .then((data) => { if (!objectValues.inputValue) return setObject(data)});
@@ -107,7 +109,7 @@ const Navbar = () => {
                   title={object.name}
                 />
                 <h5 className="navbar-list-item-link__title">
-                  AbdujalilovIsmoilov
+                  {object.login}
                 </h5>
               </a>
             </li>
