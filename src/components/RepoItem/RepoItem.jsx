@@ -5,7 +5,9 @@ const RepoItem = () => {
   const { apiValue } = useContext(Context);
 
   const api = async () => {
-    const request = await fetch(`https://api.github.com/users/${apiValue}`);
+    const request = await fetch(
+      `https://api.github.com/users/${apiValue}/repos`
+    );
     const result = await request.json();
     console.log(result);
   };
