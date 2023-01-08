@@ -16,7 +16,7 @@ const App = () => {
   );
 
   document.body.style.overflow = navbar ? "hidden" : "visible";
-
+  console.log(object);
   return (
     <>
       <BrowserRouter>

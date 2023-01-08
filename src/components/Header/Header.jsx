@@ -4,7 +4,7 @@ import { Context } from "../../UI/context/Context";
 import "./Header.scss";
 
 const Header = () => {
-  const { navbar, setNavbar, setApiValue, apiValue } = useContext(Context);
+  const { navbar, setNavbar, setApiValue, apiValue,object } = useContext(Context);
   const [valueObject, setValueObject] = useState({});
   const [value, setValue] = useState(
     localStorage.getItem("key") || "AbdujalilovIsmoilov"
@@ -22,7 +22,7 @@ const Header = () => {
     const request = await fetch(`https://api.github.com/users/${apiValue}`);
     const data = await request.json();
     setValueObject(data);
-  };
+  }
 
   const ClickedSubmit = async (e) => {
     e.preventDefault();
@@ -33,9 +33,9 @@ const Header = () => {
     if (!objectValues.value) return setApiValue(value);
   };
 
-  useEffect(() => {
+  useEffect(()=> {
     api();
-  }, []);
+  },[apiValue]);
 
   return (
     <>
@@ -101,7 +101,7 @@ const Header = () => {
               </div>
               <div className="nav-box-contact">
                 <img
-                  src={valueObject.avatar_url}
+                  src={object.avatar_url}
                   alt="user"
                   title="user"
                   className="nav-box-contact__img"

@@ -26,7 +26,6 @@ const Navbar = () => {
     fetch(`https://api.github.com/users/${inputValue}`)
       .then((response) => response.json())
       .then((data) => { if (!objectValues.inputValue) return setObject(data)});
-    setApiValue(inputValue);
   };
 
   return (
