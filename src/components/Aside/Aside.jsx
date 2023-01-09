@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./Aside.scss";
 import { Context } from "../../UI/context/Context";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Aside = () => {
   const { apiValue, setObject, object } = useContext(Context);
@@ -35,9 +35,19 @@ const Aside = () => {
             <div className="aside-box-content">
               <i className="fas fa-users"></i>
               <h6 className="aside-box-content-total">{object.followers}</h6>
-              <NavLink to="/followers" className="aside-box-content__description">followers</NavLink>
+              <NavLink
+                to="/followers"
+                className="aside-box-content__description"
+              >
+                followers
+              </NavLink>
               <h6 className="aside-box-content-total">{object.following}</h6>
-              <p className="aside-box-content__description">following</p>
+              <NavLink
+                to="/following"
+                className="aside-box-content__description"
+              >
+                following
+              </NavLink>
             </div>
             <div className="aside-box-icon">
               <div className="aside-box-icon-icons">

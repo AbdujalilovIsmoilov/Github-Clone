@@ -1,9 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./PinnedCard.scss";
 import { Context } from "../context/Context";
 
 const PinnedCard = () => {
   const { apiValue } = useContext(Context);
+  const [array, setArray] = useState([]);
 
   const api = async () => {
     const request = await fetch(
@@ -11,9 +12,12 @@ const PinnedCard = () => {
     );
     const result = await request.json();
     console.log(result);
+    setArray(result);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    api();
+  }, []);
 
   return (
     <>
@@ -21,27 +25,35 @@ const PinnedCard = () => {
         <div className="pinnedCard">
           <p className="pinnedCard__text">Popular Repositors</p>
           <div className="pinnedCard-container">
-            <div className="pinnedCard-container-name">
-              <div className="pinnedCard-container-name-container">
-                <div className="pinnedCard-container-name-container-box">
-                  <i className="fa fa-book"></i>
-                  <h4 className="pinnedCard-container-name-container-box__title">
-                    JAVASCRIPT MASALALAR
-                  </h4>
-                </div>
-                <div className="pinnedCard-container-name-container-box">
-                  <p className="pinnedCard-container-name-container-box__text">
-                    Public
-                  </p>
-                </div>
-              </div>
-              <div className="pinnedCard-container-name__comments">
-                Solved Examples in JavaScript Programming Language
-              </div>
-              <div className="pinnedCard-container-name-languages">
-                <div className="pinnedCard-container-name-languages-box"></div>
-              </div>
-            </div>
+            {array.length > 0
+              ? array.map((item, index) => (
+                  <div className="pinnedCard-container-name">
+                    <div className="pinnedCard-container-name-container">
+                      <div className="pinnedCard-container-name-container-box">
+                        <i className="fa fa-book"></i>
+                        <a
+                          target="_blank"
+                          href={item.html_url}
+                          className="pinnedCard-container-name-container-box__title"
+                        >
+                          {item.name}
+                        </a>
+                      </div>
+                      <div className="pinnedCard-container-name-container-box">
+                        <p className="pinnedCard-container-name-container-box__text">
+                          Public
+                        </p>
+                      </div>
+                    </div>
+                    <div className="pinnedCard-container-name__comments">
+                      {item.description}
+                    </div>
+                    <div className="pinnedCard-container-name-languages">
+                      <div className="pinnedCard-container-name-languages-box"></div>
+                    </div>
+                  </div>
+                ))
+              : ""}
           </div>
         </div>
       </div>

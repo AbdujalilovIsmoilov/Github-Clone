@@ -8,6 +8,7 @@ import Rooms from "./components/Rooms/Rooms";
 import Aside from "./components/Aside/Aside";
 import Repo from "./pages/Repo/Repo";
 import Followers from "./UI/Followers/Followers";
+import Following from "./UI/Following/Following";
 
 const App = () => {
   const [navbar, setNavbar] = useState(false);
@@ -39,6 +40,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/repos" element={<Repo />} />
               <Route path="/followers" element={<Followers />} />
+              <Route path="/following" element={<Following />} />
             </Routes>
           </main>
         </Context.Provider>

@@ -65,7 +65,6 @@ const RepoItem = () => {
                   </p>
                   <div className="repo-container-box-content">
                     <div className="repo-container-box-content-language">
-                      <div className="repo-container-box-content-language__color"></div>
                       <p className="repo-container-box-content-language__text">
                         {item.language}
                       </p>

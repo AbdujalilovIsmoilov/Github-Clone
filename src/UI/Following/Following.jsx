@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../context/Context";
-import "./Followers.scss";
+import "./Following.scss";
 
 const Followers = () => {
   const { apiValue } = useContext(Context);
   const [array, setArray] = useState([]);
   const api = async () => {
     const request = await fetch(
-      `https://api.github.com/users/${apiValue}/followers`
+      `https://api.github.com/users/${apiValue}/following`
     );
     const result = await request.json();
     setArray(result);
@@ -33,15 +33,17 @@ const Followers = () => {
                 />
                 <div className="followers-container-box-content">
                   <div className="followers-container-box-content-titles">
-                    <a target="_blank" href={item.html_url} className="followers-container-box-content-titles__login">
+                    <a
+                      target="_blank"
+                      href={item.html_url}
+                      className="followers-container-box-content-titles__login"
+                    >
                       {item.login}
                     </a>
                   </div>
                 </div>
               </div>
-              <h5 className="followers-container-box__btn">
-                Follow
-              </h5>
+              <h5 className="followers-container-box__btn">Unfollow</h5>
             </div>
           ))
         ) : (
