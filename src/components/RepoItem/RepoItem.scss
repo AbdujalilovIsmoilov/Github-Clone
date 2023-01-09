@@ -145,8 +145,10 @@ $hr-color: #21262D;
     padding: 5px 10px;
     cursor: pointer;
     border: .2px solid $hr-color;
+    z-index: 1;
+    background-color: transparent;
 
-    i {
+    .fa-star {
       color: $title-color;
       font-size: 13px;
     }
