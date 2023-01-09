@@ -4,11 +4,13 @@ import "./Followers.scss";
 
 const Followers = () => {
   const { apiValue } = useContext(Context);
+  const [array, setArray] = useState([]);
   const api = async () => {
     const request = await fetch(
       `https://api.github.com/users/${apiValue}/followers`
     );
     const result = await request.json();
+    setArray(result);
     console.log(result);
   };
 
@@ -19,36 +21,32 @@ const Followers = () => {
   return (
     <>
       <div className="container">
-        <div className="followers-container">
-          <div className="followers-container-box">
-            <img
-              src="https://picsum.photos/50/50"
-              alt="user"
-              title="user"
-              className="followers-container-box__img"
-            />
-            <div className="followers-container-box-content">
-              <div className="followers-container-box-content-titles">
-                <h5 className="followers-container-box-content-titles__name">
-                  Abdujalilov Ismoil
-                </h5>
-                <p className="followers-container-box-content-titles__login">
-                  AbdujalilovIsmoilov
-                </p>
+        {array.length > 0 ? (
+          array.map((item, index) => (
+            <div className="followers-container" key={index}>
+              <div className="followers-container-box">
+                <img
+                  src={item.avatar_url}
+                  alt="user"
+                  title="user"
+                  className="followers-container-box__img"
+                />
+                <div className="followers-container-box-content">
+                  <div className="followers-container-box-content-titles">
+                    <a target="_blank" href={item.html_url} className="followers-container-box-content-titles__login">
+                      {item.login}
+                    </a>
+                  </div>
+                </div>
               </div>
-              <p className="followers-container-box-content__comment">
-                Shohsulton Ummatov Shuhratovich 16 yers old Web Developer of
-                Uzbekistan
-              </p>
+              <a target="_blank" href={item.html_url} className="followers-container-box__btn">
+                Follow
+              </a>
             </div>
-          </div>
-          <button
-            type="button"
-            className="followers-container-box__btn"
-          >
-            Follow
-          </button>
-        </div>
+          ))
+        ) : (
+          <h1>NOT FOUND</h1>
+        )}
       </div>
     </>
   );
