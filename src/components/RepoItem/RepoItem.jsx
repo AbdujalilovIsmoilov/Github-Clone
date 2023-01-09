@@ -21,17 +21,13 @@ const RepoItem = () => {
     api();
   }, [apiValue]);
 
-  const findFunction = (regex) => {
-    return array.filter((item) => {
-      return item.name.match(regex);
-    });
-  };
-
   const keyChangeUp = (e) => {
     const keyValue = e.target.value;
-    const regex = new RegExp(keyValue.trim(), "gi");
-    const filtered = findFunction(regex);
-    if (filtered.length > 0) {
+    setState(keyValue);
+    if (keyValue.trim().length > 0) {
+      const filtered = array.filter((item) =>
+        item.name.toLowerCase().includes(keyValue.trim())
+      );
       setArray(filtered);
     } else {
       setArray(filteredFunction);
@@ -47,10 +43,7 @@ const RepoItem = () => {
             className="form__input"
             placeholder="Find a repository..."
             value={state}
-            onChange={(e) => {
-              setState(e.target.value.trim());
-              keyChangeUp(e);
-            }}
+            onChange={(e) => keyChangeUp(e)}
           />
         </form>
         {array.length > 0

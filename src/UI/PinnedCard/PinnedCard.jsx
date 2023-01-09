@@ -1,7 +1,20 @@
-import React from "react";
+import { useContext, useEffect } from "react";
 import "./PinnedCard.scss";
+import { Context } from "../context/Context";
 
 const PinnedCard = () => {
+  const { apiValue } = useContext(Context);
+
+  const api = async () => {
+    const request = await fetch(
+      `https://api.github.com/users/${apiValue}/repos`
+    );
+    const result = await request.json();
+    console.log(result);
+  };
+
+  useEffect(() => {}, []);
+
   return (
     <>
       <div className="wrapper">

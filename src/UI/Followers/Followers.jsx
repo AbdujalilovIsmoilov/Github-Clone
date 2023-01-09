@@ -39,9 +39,9 @@ const Followers = () => {
                   </div>
                 </div>
               </div>
-              <a target="_blank" href={item.html_url} className="followers-container-box__btn">
-                Follow
-              </a>
+              <h5 className="followers-container-box__btn">
+                Unfollow
+              </h5>
             </div>
           ))
         ) : (
