@@ -106,6 +106,7 @@ $hr-color: #21262D;
       color: $title-color;
       font-size: 14px;
       margin: 10px 0 15px 0;
+      line-height: 25px;
     }
 
     &-content {
@@ -163,4 +164,63 @@ $hr-color: #21262D;
       color: $title-color;
     }
   }
+}
+
+@media only screen and (max-width: 850px) {
+  .form {
+    &__input {
+      width: 100%;
+    }
+  }
+
+  .repo-container {
+    &-box {
+      &-titles {
+        &__name {
+          font-size: 18px;
+          line-height: 30px;
+        }
+      }
+
+    }
+
+    &-star {
+      @include flexbox(flex, center, center, 10px, row);
+
+      .fa-star {
+        font-size: 12px;
+      }
+
+      &__text {
+        font-size: 14px;
+      }
+
+    }
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .repo-container {
+    @include flexbox(grid, space-between, flex-start, stretch, row);
+
+    &-box {
+      &-titles {
+        @include flexbox(grid, flex-start, flex-start, stretch, row);
+
+        &__public {
+          width: 50px;
+        }
+      }
+
+    }
+
+    &-star {
+      width: 75px;
+
+      margin: {
+        top: 15px;
+      }
+    }
+  }
+
 }
