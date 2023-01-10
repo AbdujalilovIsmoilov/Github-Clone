@@ -93,23 +93,22 @@ $repo-link-color: #56A2FA;
       }
     }
   }
-
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 840px) {
   .pinnedCard {
-    margin: {
-      top: 20px;
+    &-container {
+      @include GridFunction(grid, auto, 20px);
     }
   }
 }
 
-
-@media only screen and (max-width: 440px) {
-  .pinnedCard{
-    &-container{
+@media only screen and (max-width: 410px) {
+  .pinnedCard {
+    &-container {
       &-name {
         width: 100%;
+        padding: 15px 5px;
       }
     }
   }

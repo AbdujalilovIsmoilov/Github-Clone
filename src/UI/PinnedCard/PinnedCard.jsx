@@ -11,13 +11,12 @@ const PinnedCard = () => {
       `https://api.github.com/users/${apiValue}/repos`
     );
     const result = await request.json();
-    console.log(result);
     setArray(result);
   };
 
   useEffect(() => {
     api();
-  }, []);
+  }, [apiValue]);
 
   return (
     <>
@@ -27,7 +26,7 @@ const PinnedCard = () => {
           <div className="pinnedCard-container">
             {array.length > 0
               ? array.map((item, index) => (
-                  <div className="pinnedCard-container-name">
+                  <div className="pinnedCard-container-name" key={index}>
                     <div className="pinnedCard-container-name-container">
                       <div className="pinnedCard-container-name-container-box">
                         <i className="fa fa-book"></i>

@@ -40,14 +40,14 @@ body {
   @include gridFunction(grid, repeat(2, auto), flex-start, 20px);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1215px) {
   .main {
     @include gridFunction(grid, auto, center, 20px);
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 390px) {
   .container {
-    padding: 10px;
+    padding: 0 5px;
   }
 }
