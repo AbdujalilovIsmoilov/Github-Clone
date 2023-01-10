@@ -12,11 +12,12 @@ $btn-bg-color: #21262D;
 
 .aside {
   max-width: 300px;
+
   margin: {
     top: 50px;
   }
 
-    &-box {
+  &-box {
     &__user {
       height: 300px;
       width: 300px;
@@ -75,9 +76,11 @@ $btn-bg-color: #21262D;
       }
 
       cursor: pointer;
+
       margin: {
         top: 20px;
       }
+
       &:hover {
         opacity: 1;
       }

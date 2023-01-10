@@ -1,12 +1,11 @@
-import { useContext, useState, useEffect } from "react";
-import Navbar from "../../UI/Navbar/Navbar";
+import { useContext, useState } from "react";
 import { Context } from "../../UI/context/Context";
+import Navbar from "../../UI/Navbar/Navbar";
+import { NavLink } from "react-router-dom";
 import "./Header.scss";
 
 const Header = () => {
-  const { navbar, setNavbar, setApiValue, apiValue, object } =
-    useContext(Context);
-  const [valueObject, setValueObject] = useState({});
+  const { setNavbar, setApiValue, object, navbar } = useContext(Context);
   const [value, setValue] = useState(
     localStorage.getItem("key") || "AbdujalilovIsmoilov"
   );
@@ -19,24 +18,10 @@ const Header = () => {
     value: value.trim().length == 0,
   };
 
-  const api = async () => {
-    const request = await fetch(`https://api.github.com/users/${apiValue}`);
-    const data = await request.json();
-    setValueObject(data);
-  };
-
-  useEffect(() => {
-    api();
-  }, [apiValue]);
-
   const ClickedSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`https://api.github.com/users/${apiValue}`);
-    const data = await response.json();
-    setValueObject(data);
     setValue("");
     if (!objectValues.value) return setApiValue(value);
-   
   };
 
   return (
@@ -47,7 +32,9 @@ const Header = () => {
           <nav className="nav">
             <i className="fa fa-bars" onClick={(e) => ClickedNavbar(e)}></i>
             <div className="nav-box">
-              <i className="fab fa-github"></i>
+              <NavLink to="/">
+                <i className="fab fa-github"></i>
+              </NavLink>
               <form
                 className="nav-box-form"
                 action="#"

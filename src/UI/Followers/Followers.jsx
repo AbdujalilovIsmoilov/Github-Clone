@@ -21,32 +21,32 @@ const Followers = () => {
   return (
     <>
       <div className="container">
-        {array.length > 0 ? (
-          array.map((item, index) => (
-            <div className="followers-container" key={index}>
-              <div className="followers-container-box">
-                <img
-                  src={item.avatar_url}
-                  alt="user"
-                  title="user"
-                  className="followers-container-box__img"
-                />
-                <div className="followers-container-box-content">
-                  <div className="followers-container-box-content-titles">
-                    <a target="_blank" href={item.html_url} className="followers-container-box-content-titles__login">
-                      {item.login}
-                    </a>
+        {array.length > 0
+          ? array.map((item, index) => (
+              <div className="followers-container" key={index}>
+                <div className="followers-container-box">
+                  <img
+                    src={item.avatar_url}
+                    alt="user"
+                    title="user"
+                    className="followers-container-box__img"
+                  />
+                  <div className="followers-container-box-content">
+                    <div className="followers-container-box-content-titles">
+                      <a
+                        target="_blank"
+                        href={item.html_url}
+                        className="followers-container-box-content-titles__login"
+                      >
+                        {item.login}
+                      </a>
+                    </div>
                   </div>
                 </div>
+                <h5 className="followers-container-box__btn">Follow</h5>
               </div>
-              <h5 className="followers-container-box__btn">
-                Follow
-              </h5>
-            </div>
-          ))
-        ) : (
-          <h1>NOT FOUND</h1>
-        )}
+            ))
+          : ""}
       </div>
     </>
   );

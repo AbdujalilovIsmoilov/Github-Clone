@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../context/Context";
+import { NavLink } from "react-router-dom";
 import "./Navbar.scss";
 
 const Navbar = () => {
-  const { navbar, apiValue, setObject, object, setApiValue } =
-    useContext(Context);
+  const { navbar, apiValue, setObject, object } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
 
   const objectValues = {
@@ -15,6 +15,7 @@ const Navbar = () => {
     const request = await fetch(`https://api.github.com/users/${apiValue}`);
     const result = await request.json();
     setObject(result);
+    console.log(result);
   };
 
   useEffect(() => {
@@ -22,12 +23,14 @@ const Navbar = () => {
   }, [apiValue]);
 
   const ClickedSubmit = (e) => {
-    setInputValue("")
+    setInputValue("");
     e.preventDefault();
     window.location.reload();
     fetch(`https://api.github.com/users/${inputValue}`)
       .then((response) => response.json())
-      .then((data) => { if (!objectValues.inputValue) return setObject(data)});
+      .then((data) => {
+        if (!objectValues.inputValue) return setObject(data);
+      });
   };
 
   return (
@@ -98,8 +101,8 @@ const Navbar = () => {
               </a>
             </li>
             <li className="navbar-list-item">
-              <a
-                href="#"
+              <NavLink
+                to="/"
                 className="navbar-list-item-link navbar-list-item-link--flex"
               >
                 <img
@@ -108,10 +111,8 @@ const Navbar = () => {
                   alt={object.name}
                   title={object.name}
                 />
-                <h5 className="navbar-list-item-link__title">
-                  {object.login}
-                </h5>
-              </a>
+                <h5 className="navbar-list-item-link__title">{object.login}</h5>
+              </NavLink>
             </li>
             <li className="navbar-list-item">
               <a

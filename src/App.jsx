@@ -18,6 +18,7 @@ const App = () => {
   );
 
   document.body.style.overflow = navbar ? "hidden" : "visible";
+
   return (
     <>
       <BrowserRouter>
@@ -33,7 +34,6 @@ const App = () => {
         >
           <Header />
           <Rooms />
-
           <main className="main container">
             <Aside />
             <Routes>

@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import "./Rooms.scss";
 import { NavLink } from "react-router-dom";
 import { Context } from "../../UI/context/Context";
+import "./Rooms.scss";
 
 const Rooms = () => {
-  const { apiValue,object } = useContext(Context);
+  const { apiValue } = useContext(Context);
   const [array, setArray] = useState([]);
 
   const api = async () => {

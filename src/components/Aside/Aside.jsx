@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import "./Aside.scss";
 import { Context } from "../../UI/context/Context";
 import { NavLink } from "react-router-dom";
+import "./Aside.scss";
+
 
 const Aside = () => {
   const { apiValue, setObject, object } = useContext(Context);
@@ -15,6 +16,7 @@ const Aside = () => {
   useEffect(() => {
     api();
   }, [apiValue]);
+  
   return (
     <>
       <div className="container">

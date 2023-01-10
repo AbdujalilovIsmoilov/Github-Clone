@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import "./PinnedCard.scss";
 import { Context } from "../context/Context";
+import "./PinnedCard.scss";
 
 const PinnedCard = () => {
   const { apiValue } = useContext(Context);

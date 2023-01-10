@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
-import "./RepoItem.scss";
 import { Context } from "../../UI/context/Context";
+import "./RepoItem.scss";
 
 const RepoItem = () => {
   const { apiValue } = useContext(Context);
@@ -24,6 +24,7 @@ const RepoItem = () => {
   const keyChangeUp = (e) => {
     const keyValue = e.target.value;
     setState(keyValue);
+    
     if (keyValue.trim().length > 0) {
       const filtered = array.filter((item) =>
         item.name.toLowerCase().includes(keyValue.trim())
