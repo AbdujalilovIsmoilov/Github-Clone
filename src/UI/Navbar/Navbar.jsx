@@ -15,7 +15,6 @@ const Navbar = () => {
     const request = await fetch(`https://api.github.com/users/${apiValue}`);
     const result = await request.json();
     setObject(result);
-    console.log(result);
   };
 
   useEffect(() => {

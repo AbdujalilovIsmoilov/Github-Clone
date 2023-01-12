@@ -92,6 +92,29 @@ $repo-link-color: #56A2FA;
         }
       }
     }
+
+
+  }
+
+  &-btnGroup {
+    @include flexbox(flex, center, center, 10px, row);
+    margin: {
+      top: 50px;
+    }
+
+    &__btn {
+      font-size: 18px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border: .5px solid $text-color;
+      background-color: transparent;
+      color: $text-color;
+      cursor: pointer;
+    }
   }
 }
 

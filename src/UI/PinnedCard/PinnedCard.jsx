@@ -4,7 +4,12 @@ import "./PinnedCard.scss";
 
 const PinnedCard = () => {
   const { apiValue } = useContext(Context);
+  const [total, setTotal] = useState(6);
+  const [totalIndex, setTotalIndex] = useState(1);
+  const firstOperator = total * totalIndex;
+  const lastOperator = firstOperator - total;
   const [array, setArray] = useState([]);
+  const pushArray = [];
 
   const api = async () => {
     const request = await fetch(
@@ -18,6 +23,15 @@ const PinnedCard = () => {
     api();
   }, [apiValue]);
 
+  const sliceApi = array.slice(lastOperator, firstOperator);
+  for (let i = 1; i <= Math.floor(array.length / total); i++) {
+    pushArray.push(i);
+  }
+
+  const ClickedBtn = (number) => {
+    setTotalIndex(number);
+  };
+
   return (
     <>
       <div className="wrapper">
@@ -25,7 +39,7 @@ const PinnedCard = () => {
           <p className="pinnedCard__text">Popular Repositors</p>
           <div className="pinnedCard-container">
             {array.length > 0
-              ? array.map((item, index) => (
+              ? sliceApi.map((item, index) => (
                   <div className="pinnedCard-container-name" key={index}>
                     <div className="pinnedCard-container-name-container">
                       <div className="pinnedCard-container-name-container-box">
@@ -53,6 +67,19 @@ const PinnedCard = () => {
                   </div>
                 ))
               : ""}
+          </div>
+          <div className="pinnedCard-btnGroup">
+            {pushArray.length &&
+              pushArray.map((item, index) => (
+                <button
+                  key={index}
+                  className="pinnedCard-btnGroup__btn"
+                  type="button"
+                  onClick={() => ClickedBtn(item)}
+                >
+                  {item}
+                </button>
+              ))}
           </div>
         </div>
       </div>

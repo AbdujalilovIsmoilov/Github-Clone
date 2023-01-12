@@ -166,6 +166,28 @@ $hr-color: #21262D;
   }
 }
 
+.btn-group {
+  @include flexbox(flex, center, center, 10px, row);
+
+  margin: {
+    top: 75px;
+  }
+
+  &__btn {
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+    border: .5px solid $placeholder-color;
+    color: $placeholder-color;
+    background-color: transparent;
+  }
+}
+
 @media only screen and (max-width: 850px) {
   .form {
     &__input {
